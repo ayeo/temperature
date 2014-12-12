@@ -7,11 +7,11 @@ class Celsius extends AbstractScale
 
 	public function getValueInCelsius()
 	{
-		return $this->getValue();
+		return (float) $this->getValue();
 	}
 
 	public function setValueInCelsius($celsius)
 	{
-		$this->value =  $celsius;
+		$this->value = (float) $celsius;
 	}
 }

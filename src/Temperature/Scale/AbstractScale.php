@@ -83,8 +83,14 @@ abstract class AbstractScale
 		$this->formatter = $formatter;
 	}
 
+	/**
+	 * @param $celsius
+	 */
 	abstract function setValueInCelsius($celsius);
 
+	/**
+	 * @return float
+	 */
 	abstract function getValueInCelsius();
 }
 

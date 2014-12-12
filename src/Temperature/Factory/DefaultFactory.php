@@ -12,7 +12,9 @@ class DefaultFactory
 	(
 		'K' => 'Temperature\Scale\Kelvin',
 		'C' => 'Temperature\Scale\Celsius',
-		'F' => 'Temperature\Scale\Farenheit'
+		'F' => 'Temperature\Scale\Farenheit',
+		'R' => 'Temperature\Scale\Rankine',
+		'Re' => 'Temperature\Scale\Reaumur',
 	);
 
 	public function build($value, $symbol)

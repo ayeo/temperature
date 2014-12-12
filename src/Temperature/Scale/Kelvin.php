@@ -7,12 +7,12 @@ class Kelvin extends AbstractScale
 
 	public function getValueInCelsius()
 	{
-		return $this->getValue() - 273.15;
+		return (float) $this->getValue() - 273.15;
 	}
 
 	public function setValueInCelsius($celsius)
 	{
-		$this->value = $celsius + 273.15;
+		$this->value = (float) $celsius + 273.15;
 	}
 
 }

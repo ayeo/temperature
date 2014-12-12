@@ -7,12 +7,12 @@ class Farenheit extends AbstractScale
 
 	public function getValueInCelsius()
 	{
-		return 5 / 9 * ($this->getValue() - 32);
+		return (float) 5 / 9 * ($this->getValue() - 32);
 	}
 
 	public function setValueInCelsius($celsius)
 	{
-		$this->value =  32 + 9 / 5 * $celsius;
+		$this->value = (float) 32 + 9 / 5 * $celsius;
 	}
 
 }
