@@ -8,6 +8,13 @@ Simple library to handle temperature scales
 * Kelvin
 * Farenheit
 
+### Install using Composer
+```
+require: {
+	"ayeo/temperature": "dev-master"
+}
+```
+
 ### Usage
 ```
 use Temperature\Factory\DefaultFactory as TemperatureFactory;
@@ -19,3 +26,4 @@ echo $temperature; //63 °F
 echo $temperature->convert('C'); //17.2222222222 °C
 echo $temperature->convert('C')->setPrecision(2); //returns 17.22 °C
 ```
+
