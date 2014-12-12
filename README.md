@@ -12,8 +12,8 @@ Simple library to handle temperature scales
 ```
 use Temperature\Factory\DefaultFactory as TemperatureFactory;
 
-$builder = new TemperatureBuilder();
-$temperature = $builder->build(63, 'F');
+$factory = new TemperatureFactory();
+$temperature = $factory->build(63, 'F');
 
 echo $temperature; //63 °F
 echo $temperature->convert('C'); //17.2222222222 °C
