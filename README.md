@@ -1,7 +1,9 @@
 Temperature
 ===========
 
-Simple library to handle temperature scales
+Simple library to handle temperature scales. Features:
+* Display formatted tempteratue (e.g 100 °C)
+* Simple convert beetwen different scales
 
 ### Supported temperature scales
 * Celsius (C)
