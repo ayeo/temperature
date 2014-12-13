@@ -18,11 +18,22 @@ class DefaultFactory
 	 */
 	private $supportedScalesCollection;
 
+	private $autoConvertTo = false;
+
 
 	public function __construct()
 	{
 		$this->supportedScalesCollection = new SuppoertedScalesCollection();
 		$this->formatter = $this->getDefaultFormatter();
+	}
+
+	/**
+	 * @param $symbol
+	 */
+	public function setAutoconvertTo($symbol)
+	{
+		$this->supportedScalesCollection->get($symbol); //throws Exception
+		$this->autoConvertTo = $symbol;
 	}
 
 	/**
@@ -36,6 +47,11 @@ class DefaultFactory
 		$scale = $this->supportedScalesCollection->get($symbol, $value);
 		$scale->setFactory($this);
 		$scale->setFormatter($this->getFormatter());
+
+		if ($this->autoConvertTo)
+		{
+			return $this->buildByScale($scale, $this->autoConvertTo);
+		}
 
 		return $scale;
 	}
