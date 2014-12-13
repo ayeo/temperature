@@ -32,9 +32,10 @@ $temperature->convert('C')->setPrecision(2); //17.22 °C
 ```
 
 ### Custom formatter
-As default formatter is build by your locale settings
+As default formatter is build by your locale settings. You can adjust it to your needs.
 ```
 use Temperature\Formatter\StandardFormatter;
+
 $formatter = new StandardFormatter();
 $formatter->setDecimalSeperator(",");
 $formatter->setPrecision(2);
@@ -71,9 +72,8 @@ class C2Scale extends AbstractScale
 	{
 		$this->value = $celsius * 2;
 	}
-
-
 }
+
 $factory->getSupportedScales()->addSupportedType('C2', 'C2Scale');
 $factory->build(100, 'C')->convert('C2'); //200 C2
 $factory->build(50, 'K')->convert('C2'); //-446 C2
