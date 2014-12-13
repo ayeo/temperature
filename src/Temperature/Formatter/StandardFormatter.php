@@ -1,13 +1,20 @@
 <?php
 namespace Temperature\Formatter;
 
-use Temperature\Scale\AbstractScale;
+use Temperature\Scales\Scale\AbstractScale;
 
-class StandardFormatter
+class StandardFormatter implements FormatterInterface
 {
 	private $precise = null;
 
 	private $decimalSeperator = ".";
+
+	private $showSymbol = true;
+
+	public function setShowSymbolMode($mode)
+	{
+		$this->showSymbol = $mode;
+	}
 
 	public function setPrecision($precision)
 	{
@@ -21,7 +28,12 @@ class StandardFormatter
 
 	public function format(AbstractScale $scale)
 	{
-		return sprintf("%s %s", $this->getValue($scale), $scale->getSymbol());
+		if ($this->showSymbol)
+		{
+			return sprintf("%s %s", $this->getValue($scale), $scale->getSymbol());
+		}
+
+		return (string) $this->getValue($scale);
 	}
 
 	private function getValue(AbstractScale $scale)

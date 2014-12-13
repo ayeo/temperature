@@ -1,35 +1,43 @@
 <?php
 namespace Temperature\Factory;
 
+use Temperature\Formatter\FormatterInterface;
 use Temperature\Formatter\StandardFormatter;
-use Temperature\Scale\AbstractScale;
+use Temperature\Scales\Scale\AbstractScale;
+use Temperature\Scales\SuppoertedScalesCollection;
 
 class DefaultFactory
 {
+	/**
+	 * @var FormatterInterface
+	 */
 	private $formatter;
 
-	private $supportedTypes = array
-	(
-		'K' => 'Temperature\Scale\Kelvin',
-		'C' => 'Temperature\Scale\Celsius',
-		'F' => 'Temperature\Scale\Farenheit',
-		'R' => 'Temperature\Scale\Rankine',
-		'Re' => 'Temperature\Scale\Reaumur',
-	);
+	/**
+	 * @var SuppoertedScalesCollection
+	 */
+	private $supportedScalesCollection;
 
+
+	public function __construct()
+	{
+		$this->supportedScalesCollection = new SuppoertedScalesCollection();
+		$this->formatter = $this->getDefaultFormatter();
+	}
+
+	/**
+	 * @param $value
+	 * @param $symbol
+	 * @return AbstractScale
+	 * @throws \Exception
+	 */
 	public function build($value, $symbol)
 	{
-		if (isset($this->supportedTypes[$symbol]))
-		{
-			$classname = $this->supportedTypes[$symbol];
-			$scale = new $classname($value);
-			$scale->setFactory($this);
-			$scale->setFormatter($this->getFormatter());
+		$scale = $this->supportedScalesCollection->get($symbol, $value);
+		$scale->setFactory($this);
+		$scale->setFormatter($this->getFormatter());
 
-			return $scale;
-		}
-
-		throw new Exception('Invalid temperature scale symbol');
+		return $scale;
 	}
 
 	/**
@@ -40,55 +48,33 @@ class DefaultFactory
 	 */
 	public function buildByScale(AbstractScale $scale, $symbol)
 	{
-		if (isset($this->supportedTypes[$symbol]))
-		{
-			$newScale = $this->build(null, $symbol);
-			$newScale->setValueInCelsius($scale->getValueInCelsius());
+		$newScale = $this->supportedScalesCollection->get($symbol);
+		$newScale->setValueInCelsius($scale->getValueInCelsius());
+		$newScale->setFactory($this);
+		$newScale->setFormatter($this->getFormatter());
 
-			return $newScale;
-		}
-
-		throw new \Exception('Invalid temperature scale symbol');
+		return $newScale;
 	}
 
-	/**
-	 * @param $symbol scale symbol (e.g. K or C)
-	 * @param $className class name must exists
-	 * @throws \Exception
-	 */
-	public function addSupportedType($symbol, $className)
-	{
-		if (class_exists($className))
-		{
-			$this->supportedTypes[$symbol] = $className;
-		}
-
-		throw new \Exception('Given class name does NOT exists');
-	}
 
 	/**
-	 * @param StandardFormatter $formatter
+	 * @param FormatterInterface $formatter
 	 */
-	public function setFormatter(StandardFormatter $formatter)
+	public function setFormatter(FormatterInterface $formatter)
 	{
 		$this->formatter = $formatter;
 	}
 
 	/**
-	 * @return StandardFormatter
+	 * @return FormatterInterface
 	 */
-	private function getFormatter()
+	public function getFormatter()
 	{
-		if (is_null($this->formatter))
-		{
-			return $this->getDefaultFormatter();
-		}
-
 		return $this->formatter;
 	}
 
 	/**
-	 * @return StandardFormatter
+	 * @return FormatterInterface
 	 */
 	private function getDefaultFormatter()
 	{
@@ -97,5 +83,10 @@ class DefaultFactory
 		$formatter->setDecimalSeperator($locale['decimal_point']);
 
 		return $formatter;
+	}
+
+	public function getSupportedScales()
+	{
+		return $this->supportedScalesCollection;
 	}
 }
