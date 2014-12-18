@@ -20,7 +20,7 @@ Simple library to handle temperature scales. Features:
 ### Install using Composer
 ```
 require: {
-	"ayeo/temperature": "dev-master"
+	"ayeo/temperature": "~0.1"
 }
 ```
 
