@@ -6,92 +6,92 @@ use Temperature\Formatter\FormatterInterface;
 
 abstract class AbstractScale
 {
-	/**
-	 * @var DefaultFactory
-	 */
-	private $factory;
+    /**
+     * @var DefaultFactory
+     */
+    private $factory;
 
-	/**
-	 * @var FormatterInterface
-	 */
-	private $formatter;
+    /**
+     * @var FormatterInterface
+     */
+    private $formatter;
 
-	/**
-	 * @var null|float
-	 */
-	protected $value = null;
+    /**
+     * @var null|float
+     */
+    protected $value = null;
 
-	/**
-	 * @param null|float $value
-	 */
-	public function __construct($value = null)
-	{
-		$this->value = $value;
-	}
+    /**
+     * @param null|float $value
+     */
+    public function __construct($value = null)
+    {
+        $this->value = $value;
+    }
 
-	/**
-	 * @return float|null
-	 */
-	public function getValue()
-	{
-		return $this->value;
-	}
+    /**
+     * @return float|null
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getSymbol()
-	{
-		return static::SYMBOL;
-	}
+    /**
+     * @return string
+     */
+    public function getSymbol()
+    {
+        return static::SYMBOL;
+    }
 
-	/**
-	 * @param $symbol
-	 * @return AbstractScale
-	 */
-	public function convert($symbol)
-	{
-		return $this->factory->buildByScale($this, $symbol);
-	}
+    /**
+     * @param $symbol
+     * @return AbstractScale
+     */
+    public function convert($symbol)
+    {
+        return $this->factory->buildByScale($this, $symbol);
+    }
 
 
-	public function __toString()
-	{
-		return $this->formatter->format($this);
-	}
+    public function __toString()
+    {
+        return $this->formatter->format($this);
+    }
 
-	public function setPrecision($precision)
-	{
-		$this->formatter = clone($this->factory->getFormatter());
-		$this->formatter->setPrecision($precision);
+    public function setPrecision($precision)
+    {
+        $this->formatter = clone($this->factory->getFormatter());
+        $this->formatter->setPrecision($precision);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * @param DefaultFactory $factory
-	 */
-	public function setFactory(DefaultFactory $factory)
-	{
-		$this->factory = $factory;
-	}
+    /**
+     * @param DefaultFactory $factory
+     */
+    public function setFactory(DefaultFactory $factory)
+    {
+        $this->factory = $factory;
+    }
 
-	/**
-	 * @param FormatterInterface $formatter
-	 */
-	public function setFormatter(FormatterInterface $formatter)
-	{
-		$this->formatter = $formatter;
-	}
+    /**
+     * @param FormatterInterface $formatter
+     */
+    public function setFormatter(FormatterInterface $formatter)
+    {
+        $this->formatter = $formatter;
+    }
 
-	/**
-	 * @param $celsius
-	 */
-	abstract function setValueInCelsius($celsius);
+    /**
+     * @param $celsius
+     */
+    abstract function setValueInCelsius($celsius);
 
-	/**
-	 * @return float
-	 */
-	abstract function getValueInCelsius();
+    /**
+     * @return float
+     */
+    abstract function getValueInCelsius();
 }
 
