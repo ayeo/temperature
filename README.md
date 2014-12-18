@@ -36,6 +36,18 @@ $temperature->convert('C'); //17.2222222222 °C
 $temperature->convert('C')->setPrecision(2); //17.22 °C
 ```
 
+### Auto conversion
+You can set Factory to autoconvert temperatures to given scale
+```
+use Temperature\Factory\DefaultFactory as TemperatureFactory;
+
+$factory = new TemperatureFactory;
+$factory->setAutoconvertTo('C');
+$factory->getFormatter()->setPrecision(2);
+
+$factory->build(100, 'F'); //37.78 °C
+```
+
 ### Custom formatter
 As default formatter is build by your locale settings. You can adjust it to your needs.
 ```php
