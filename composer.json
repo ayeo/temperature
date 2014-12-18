@@ -23,7 +23,7 @@
         "psr-4": {
             "Temperature\\": "src//Temperature//"
         }
-    }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "0.1.0"
