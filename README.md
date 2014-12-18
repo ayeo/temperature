@@ -1,3 +1,8 @@
+[![Build Status](http://img.shields.io/travis/ayeo/temperature.svg?style=flat-square)](https://travis-ci.org/ayeo/temperature)
+[![Scrutinizer Code Quality](http://img.shields.io/scrutinizer/g/ayeo/temperature.svg?style=flat-square)](https://scrutinizer-ci.com/g/ayeo/temperature/build-status/master)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](license.md)
+[![Packagist Version](https://img.shields.io/packagist/v/ayeo/temperature.svg?style=flat-square)](https://packagist.org/packages/ayeo/temperature)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/ayeo/temperature/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/ayeo/temperature/?branch=master)
 Temperature
 ===========
 
@@ -20,7 +25,7 @@ require: {
 ```
 
 ### Basic usage
-```
+```php
 use Temperature\Factory\DefaultFactory as TemperatureFactory;
 
 $factory = new TemperatureFactory();
@@ -33,7 +38,7 @@ $temperature->convert('C')->setPrecision(2); //17.22 °C
 
 ### Custom formatter
 As default formatter is build by your locale settings. You can adjust it to your needs.
-```
+```php
 use Temperature\Formatter\StandardFormatter;
 
 $formatter = new StandardFormatter();
@@ -50,7 +55,7 @@ You can write your own Formatter. I must implemetnts FormatterInterface.
 
 ### Custom temperature scale
 Assume you need new temperature scale. For purpose of this example let say C2 = 2 * Celsius
-```
+```php
 use \Temperature\Scales\Scale\AbstractScale;
 
 class C2Scale extends AbstractScale
@@ -79,3 +84,5 @@ $factory->build(100, 'C')->convert('C2'); //200 C2
 $factory->build(50, 'K')->convert('C2'); //-446 C2
 ```
 
+## License
+The MIT License (MIT). Please see [the license file](license.md) for more information.

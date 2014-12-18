@@ -1,7 +1,9 @@
 {
     "name": "ayeo/temperature",
     "description": "Simple library to handle temperature scales",
-    "version": "1.0.0",
+    "homepage": "https://github.com/ayeo/temperature",
+    "type": "library",
+    "version": "0.1.0",
     "license": "MIT",
     "authors": [
         {
@@ -20,6 +22,11 @@
     "autoload": {
         "psr-4": {
             "Temperature\\": "src//Temperature//"
+        }
+    }
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.0"
         }
     }
 }
