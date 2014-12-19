@@ -14,5 +14,4 @@ class Farenheit extends AbstractScale
     {
         $this->value = (float) 32 + 9 / 5 * $celsius;
     }
-
 }

@@ -14,5 +14,4 @@ class Rankine extends AbstractScale
     {
         $this->value = (float) ($celsius + 273.15) * 1.8;
     }
-
 }

@@ -22,5 +22,4 @@ class Kelvin extends AbstractScale
     {
         return false;
     }
-
 }

@@ -14,5 +14,4 @@ class Reaumur extends AbstractScale
     {
         $this->value = (float) $celsius * 4 / 5;
     }
-
 }
