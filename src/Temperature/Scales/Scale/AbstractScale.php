@@ -101,7 +101,7 @@ abstract class AbstractScale
     }
 
     /**
-     * @param $celsius
+     * @param double $celsius
      */
     abstract function setValueInCelsius($celsius);
 
