@@ -29,7 +29,4 @@ class StandardFormatterTest extends \PHPUnit_Framework_TestCase
             [true, 100.9191, "C", 2, '100.92 °C'],
         ];
     }
-
-
 }
- 
