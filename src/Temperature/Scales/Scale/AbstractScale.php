@@ -110,4 +110,3 @@ abstract class AbstractScale
      */
     abstract public function getValueInCelsius();
 }
-
