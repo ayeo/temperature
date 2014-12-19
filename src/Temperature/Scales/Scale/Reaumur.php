@@ -3,7 +3,7 @@ namespace Temperature\Scales\Scale;
 
 class Reaumur extends AbstractScale
 {
-    const SYMBOL = "°Ré";
+    const SYMBOL = "Ré";
 
     public function getValueInCelsius()
     {

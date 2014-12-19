@@ -42,6 +42,15 @@ abstract class AbstractScale
      */
     public function getSymbol()
     {
+        if ($this->shouldAddDegreeSignToSymbol()) {
+            return sprintf('°%s', static::SYMBOL);
+        } else {
+            return $this->getRawSymbol();
+        }
+    }
+
+    public function getRawSymbol()
+    {
         return static::SYMBOL;
     }
 
@@ -54,6 +63,13 @@ abstract class AbstractScale
         return $this->factory->buildByScale($this, $symbol);
     }
 
+    /**
+     * @return bool
+     */
+    public function shouldAddDegreeSignToSymbol()
+    {
+        return true;
+    }
 
     public function __toString()
     {

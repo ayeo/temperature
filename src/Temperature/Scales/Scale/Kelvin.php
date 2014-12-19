@@ -15,4 +15,12 @@ class Kelvin extends AbstractScale
         $this->value = (float) $celsius + 273.15;
     }
 
+    /**
+     * @return bool
+     */
+    public function shouldAddDegreeSignToSymbol()
+    {
+        return false;
+    }
+
 }

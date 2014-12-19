@@ -3,7 +3,7 @@ namespace Temperature\Scales\Scale;
 
 class Farenheit extends AbstractScale
 {
-    const SYMBOL = "°F";
+    const SYMBOL = "F";
 
     public function getValueInCelsius()
     {

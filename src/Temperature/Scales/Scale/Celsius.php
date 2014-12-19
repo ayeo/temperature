@@ -3,7 +3,7 @@ namespace Temperature\Scales\Scale;
 
 class Celsius extends AbstractScale
 {
-    const SYMBOL = "°C";
+    const SYMBOL = "C";
 
     public function getValueInCelsius()
     {

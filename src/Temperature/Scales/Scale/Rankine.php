@@ -3,7 +3,7 @@ namespace Temperature\Scales\Scale;
 
 class Rankine extends AbstractScale
 {
-    const SYMBOL = "°R";
+    const SYMBOL = "R";
 
     public function getValueInCelsius()
     {

@@ -7,6 +7,9 @@ use Temperature\Scale\Kelvin;
 
 class DafaultFacotryTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var DefaultFactory
+     */
     private $factory;
 
     public function setUp()
@@ -53,5 +56,13 @@ class DafaultFacotryTest extends \PHPUnit_Framework_TestCase
             [100, 'Re', 716.67, 'R'],
             [100, 'Re', 100, 'Re'],
         ];
+    }
+
+    public function testSetAutoConvert()
+    {
+        $this->factory->setAutoconvertTo('C');
+        $scale = $this->factory->build(50, 'F');
+
+        $this->assertEquals('C', $scale->getRawSymbol());
     }
 }
