@@ -48,8 +48,7 @@ class DefaultFactory
         $scale->setFactory($this);
         $scale->setFormatter($this->getFormatter());
 
-        if ($this->autoConvertTo)
-        {
+        if ($this->autoConvertTo) {
             return $this->buildByScale($scale, $this->autoConvertTo);
         }
 

@@ -7,12 +7,12 @@ class Reaumur extends AbstractScale
 
     public function getValueInCelsius()
     {
-        return (float)$this->getValue() * 1.25;
+        return (float) $this->getValue() * 1.25;
     }
 
     public function setValueInCelsius($celsius)
     {
-        $this->value = (float)$celsius * 4 / 5;
+        $this->value = (float) $celsius * 4 / 5;
     }
 
 }

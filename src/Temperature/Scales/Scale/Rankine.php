@@ -7,12 +7,12 @@ class Rankine extends AbstractScale
 
     public function getValueInCelsius()
     {
-        return (float)$this->getValue() / 1.8 - 273.15;
+        return (float) $this->getValue() / 1.8 - 273.15;
     }
 
     public function setValueInCelsius($celsius)
     {
-        $this->value = (float)($celsius + 273.15) * 1.8;
+        $this->value = (float) ($celsius + 273.15) * 1.8;
     }
 
 }

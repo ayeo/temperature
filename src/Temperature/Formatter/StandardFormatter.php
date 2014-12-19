@@ -28,8 +28,7 @@ class StandardFormatter implements FormatterInterface
 
     public function format(AbstractScale $scale)
     {
-        if ($this->showSymbol)
-        {
+        if ($this->showSymbol) {
             return sprintf("%s %s", $this->getValue($scale), $scale->getSymbol());
         }
 
@@ -38,8 +37,7 @@ class StandardFormatter implements FormatterInterface
 
     private function getValue(AbstractScale $scale)
     {
-        if (is_null($this->precise))
-        {
+        if (is_null($this->precise)) {
             return $scale->getValue();
         }
 

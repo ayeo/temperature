@@ -5,14 +5,13 @@ use Temperature\Scales\Scale\AbstractScale;
 
 class SuppoertedScalesCollection
 {
-    private $supportedTypes = array
-    (
+    private $supportedTypes = [
         'K'  => 'Temperature\Scales\Scale\Kelvin',
         'C'  => 'Temperature\Scales\Scale\Celsius',
         'F'  => 'Temperature\Scales\Scale\Farenheit',
         'R'  => 'Temperature\Scales\Scale\Rankine',
         'Re' => 'Temperature\Scales\Scale\Reaumur',
-    );
+    ];
 
     /**
      * TODO: check if inherits AbstractScale!
@@ -23,12 +22,9 @@ class SuppoertedScalesCollection
      */
     public function addSupportedType($symbol, $className)
     {
-        if (class_exists($className))
-        {
+        if (class_exists($className)) {
             $this->supportedTypes[$symbol] = $className;
-        }
-        else
-        {
+        } else {
             throw new \Exception('Given class name does NOT exists');
         }
 
@@ -42,8 +38,7 @@ class SuppoertedScalesCollection
      */
     public function get($symbol, $value = null)
     {
-        if (array_key_exists($symbol, $this->supportedTypes))
-        {
+        if (array_key_exists($symbol, $this->supportedTypes)) {
             $className = $this->supportedTypes[$symbol];
 
             return new $className($value);
