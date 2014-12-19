@@ -65,4 +65,21 @@ class DafaultFacotryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('C', $scale->getRawSymbol());
     }
+
+    public function testPrecisionDoesNotOverwriteFormatterSettings()
+    {
+        $factory = new DefaultFactory();
+        $factory->getFormatter()->setPrecision(2);
+
+        $scale1 = $factory->build(100.1111, 'K')->setPrecision(0);
+        $scale2 = $factory->build(200.2222, 'K');
+
+        $this->assertEquals('100 K', (string) $scale1);
+        $this->assertEquals('200.22 K', (string) $scale2);
+    }
+
+    public function testGetSupportedScales()
+    {
+        $this->assertInstanceOf('Temperature\Scales\SuppoertedScalesCollection', $this->factory->getSupportedScales());
+    }
 }

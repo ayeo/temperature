@@ -32,4 +32,11 @@ class FarenheitTest extends \PHPUnit_Framework_TestCase
             [10, -12.2222222222],
         ];
     }
+
+    public function testIfValueIsFloat()
+    {
+        $farenheit = new Farenheit();
+
+        $this->assertTrue(is_float($farenheit->getValue()));
+    }
 }

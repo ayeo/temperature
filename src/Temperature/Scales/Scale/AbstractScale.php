@@ -17,24 +17,24 @@ abstract class AbstractScale
     private $formatter;
 
     /**
-     * @var null|float
+     * @var float
      */
-    protected $value = null;
+    protected $value = 0;
 
     /**
      * @param null|float $value
      */
     public function __construct($value = null)
     {
-        $this->value = $value;
+        $this->value = (float) $value;
     }
 
     /**
-     * @return float|null
+     * @return float
      */
     public function getValue()
     {
-        return $this->value;
+        return (float) $this->value;
     }
 
     /**

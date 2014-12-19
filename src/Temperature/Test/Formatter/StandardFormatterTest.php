@@ -26,7 +26,10 @@ class StandardFormatterTest extends \PHPUnit_Framework_TestCase
             [true, 100.9191, "K", 2, '100.92 K'],
             [false, 100.9191, "K", 2, '100.92'],
             [false, 100.9191, "K", 1, '100.9'],
+            [true, 100.9191, "C", 2, '100.92 °C'],
         ];
     }
+
+
 }
  

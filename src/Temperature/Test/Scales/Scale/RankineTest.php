@@ -1,6 +1,8 @@
 <?php
 namespace Temperature\Test;
 
+use Temperature\Factory\DefaultFactory;
+use Temperature\Formatter\StandardFormatter;
 use Temperature\Scales\Scale\Rankine;
 
 class RankineTest extends \PHPUnit_Framework_TestCase
