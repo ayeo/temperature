@@ -3,7 +3,7 @@
     "description": "Simple library to handle temperature scales",
     "homepage": "https://github.com/ayeo/temperature",
     "type": "library",
-    "version": "0.1.0",
+    "version": "0.1.x-dev",
     "license": "MIT",
     "authors": [
         {
