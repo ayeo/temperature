@@ -103,11 +103,11 @@ abstract class AbstractScale
     /**
      * @param double $celsius
      */
-    abstract function setValueInCelsius($celsius);
+    abstract public function setValueInCelsius($celsius);
 
     /**
      * @return float
      */
-    abstract function getValueInCelsius();
+    abstract public function getValueInCelsius();
 }
 
