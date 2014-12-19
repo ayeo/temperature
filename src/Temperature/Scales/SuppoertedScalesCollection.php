@@ -22,10 +22,14 @@ class SuppoertedScalesCollection
      */
     public function addSupportedType($symbol, $className)
     {
-        if (class_exists($className)) {
+        $classExists = class_exists($className);
+        $reflection = new \ReflectionClass($className);
+        $classIsValid = $reflection->getParentClass()->name === 'Temperature\Scales\Scale\AbstractScale';
+
+        if ($classExists && $classIsValid) {
             $this->supportedTypes[$symbol] = $className;
         } else {
-            throw new \Exception('Given class name does NOT exists');
+            throw new \Exception('Given class name does NOT exists or does not extends AbstractScale');
         }
 
     }
@@ -41,7 +45,7 @@ class SuppoertedScalesCollection
         if (array_key_exists($symbol, $this->supportedTypes)) {
             $className = $this->supportedTypes[$symbol];
 
-            return new $className($value);
+            return new $className((double) $value);
         }
 
         throw new \Exception('Invalid temperature scale symbol');
